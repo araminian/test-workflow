@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - run: pwd
+        working-directory: ${{ vars.RUNNER_TEMP }}
 
   call-workflow-passing-data:
     uses: araminian/test-workflow/.github/workflows/reusable.yaml@main
