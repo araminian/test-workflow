@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: pwd
-    working-directory: ${{ inputs.config-path }}
+        working-directory: ${{ inputs.config-path }}
       
