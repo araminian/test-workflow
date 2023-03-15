@@ -31,4 +31,5 @@ jobs:
     uses: araminian/test-workflow/.github/workflows/reusable.yaml@main
     with:
       config-path: ${{ vars.RUNNER_TEMP }}
+      ref: "main"
 
