@@ -4,8 +4,12 @@ on:
       config-path:
         required: true
         type: string
+      ref:
+        required: true
+        type: string
 jobs:
   reusable_workflow_job:
+    if: ${{ github.ref_name == inputs.ref }}
     runs-on: ubuntu-latest
     steps:
       - run: pwd
