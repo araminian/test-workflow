@@ -26,12 +26,16 @@ jobs:
         run: |
           echo "Hello, world!"
   test:
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
       - name: Do test
         run: |
           echo "Testing...."
   deploy:
+    needs:
+      - test
     runs-on: ubuntu-latest
     steps:
       - name: Do deploy
