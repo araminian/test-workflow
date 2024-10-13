@@ -25,6 +25,9 @@ jobs:
       - name: Do sample test
         run: |
           echo "Hello, world!"
+      - name: Fail
+        run: |
+          exit 1
   test:
     needs:
       - build
