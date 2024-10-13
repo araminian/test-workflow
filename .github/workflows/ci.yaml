@@ -28,6 +28,10 @@ jobs:
       - name: Fail
         run: |
           exit 1
+      - name: Print a message
+        run: |
+          echo "This is a message"
+        
   test:
     needs:
       - build
