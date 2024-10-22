@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: foo
+  namespace: argocd
+spec:
+  goTemplate: true
+  syncPolicy:
+    preserveResourcesOnDeletion: false
+  generators:
+    - git:
+        repoURL: 'https://github.com/araminian/test-workflow.git'
+        revision: 'main'
+        files:
+          - path: 'services/**/skaffold.yaml'
+  template:
+    metadata:
+      name: '{{.metadata.annotations.name}}'
+    spec:
+      source:
+        directory:
+          include: '{*.yml,*.yaml}'
+          recurse: true
+        repoURL: git@github.com:araminian/test-workflow.git
+        targetRevision: HEAD
+        path: '{{.metadata.annotations.path}}'
+      destination:
+        name: 'https://kubernetes.default.svc'
+        namespace: default
