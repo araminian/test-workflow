@@ -4,7 +4,7 @@ kind: Config
 metadata:
   name: foo
   annotations:
-    path: manifests/manifests.yaml
+    path: manifests/
     repo: github.com/araminian/test-workflow.git
     name: foo
 build:
