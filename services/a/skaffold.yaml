@@ -1,0 +1,22 @@
+---
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: foo
+  annotations:
+    path: manifests/manifests.yaml
+    repo: github.com/araminian/test-workflow.git
+    name: foo
+build:
+  artifacts:
+    - image: rminz/sk:v1
+      platforms:
+        - linux/amd64
+profiles:
+  - name: build
+    activation:
+      - env: Build=true
+    build:
+      local:
+        push: true
+        concurrency: 0
