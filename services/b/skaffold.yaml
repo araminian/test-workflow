@@ -1,0 +1,22 @@
+---
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: bar
+  annotations:
+    path: manifests/
+    repo: github.com/araminian/test-workflow.git
+    name: bar
+build:
+  artifacts:
+    - image: rminz/sk:v1
+      platforms:
+        - linux/amd64
+profiles:
+  - name: build
+    activation:
+      - env: Build=true
+    build:
+      local:
+        push: true
+        concurrency: 0
