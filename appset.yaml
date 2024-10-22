@@ -18,6 +18,7 @@ spec:
     metadata:
       name: '{{.metadata.annotations.name}}'
     spec:
+      project: default
       source:
         directory:
           include: '{*.yml,*.yaml}'
@@ -26,5 +27,5 @@ spec:
         targetRevision: HEAD
         path: '{{.metadata.annotations.path}}'
       destination:
-        name: 'https://kubernetes.default.svc'
+        server: 'https://kubernetes.default.svc'
         namespace: default
