@@ -11,19 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Create a Release
-      uses: elgohr/Github-Release-Action@v5
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        title: ${{ github.run_number }}
-        tag: ${{ github.run_number }}
     - name: Get version from pom.xml
       id: get-version
-      uses: mavrosxristoforos/get-xml-info@1.0
+      uses: mavrosxristoforos/get-xml-info@2.0
       with:
         xml-file: 'pom.xml'
         xpath: '/*[local-name()="project"]/*[local-name()="version"]'
     - name: Print version
       run: |
         echo "Project version is: ${{ steps.get-version.outputs.info }}"
+    - name: Create a Release
+      uses: elgohr/Github-Release-Action@v5
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        title: ${{ steps.get-version.outputs.info }}
+        tag: ${{ steps.get-version.outputs.info }}
