@@ -1,3 +1,6 @@
+permissions:
+  packages: write
+  contents: write
 name: Publish Release
 on:
   push:
