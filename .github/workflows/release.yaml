@@ -16,5 +16,5 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        title: MyReleaseMessage
+        title: ${{ github.run_number }}
         tag: ${{ github.run_number }}
