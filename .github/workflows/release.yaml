@@ -18,3 +18,12 @@ jobs:
       with:
         title: ${{ github.run_number }}
         tag: ${{ github.run_number }}
+    - name: Get version from pom.xml
+      id: get-version
+      uses: mavrosxristoforos/get-xml-info@1.0
+      with:
+        xml-file: 'pom.xml'
+        xpath: '/*[local-name()="project"]/*[local-name()="version"]'
+    - name: Print version
+      run: |
+        echo "Project version is: ${{ steps.get-version.outputs.info }}"
